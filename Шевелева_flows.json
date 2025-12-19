@@ -1,0 +1,292 @@
+[
+    {
+        "id": "d5f0a94921e36b9c",
+        "type": "tab",
+        "label": "Поток 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0d218dafd25a53de",
+        "type": "http in",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "url": "/calculator/add",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "a963becd4f58a12f"
+            ]
+        ]
+    },
+    {
+        "id": "41a26e13a49b1c6a",
+        "type": "http response",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1110,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a963becd4f58a12f",
+        "type": "change",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload.a) + $number(payload.b)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 220,
+        "wires": [
+            [
+                "41a26e13a49b1c6a"
+            ]
+        ]
+    },
+    {
+        "id": "53684a5bba8c73cb",
+        "type": "switch",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "property": "payload.b",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 420,
+        "wires": [
+            [
+                "b02a926f584770fb"
+            ],
+            [
+                "b5f02e528dace26b"
+            ]
+        ]
+    },
+    {
+        "id": "b02a926f584770fb",
+        "type": "change",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload.a) / $number(payload.b)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 400,
+        "wires": [
+            [
+                "54c516a3eff1bd20"
+            ]
+        ]
+    },
+    {
+        "id": "4c710414cfb432a1",
+        "type": "change",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload.a) * $number(payload.b)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 340,
+        "wires": [
+            [
+                "1ebb80e77a212c9b"
+            ]
+        ]
+    },
+    {
+        "id": "b5f02e528dace26b",
+        "type": "change",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Division by zero",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 440,
+        "wires": [
+            [
+                "54c516a3eff1bd20"
+            ]
+        ]
+    },
+    {
+        "id": "0bed898e296ae4f0",
+        "type": "change",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload.a) - $number(payload.b)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 280,
+        "wires": [
+            [
+                "5e4a331d6a1fcf5f"
+            ]
+        ]
+    },
+    {
+        "id": "8da4e9d059149d09",
+        "type": "http in",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "url": "/calculator/subtract",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "0bed898e296ae4f0"
+            ]
+        ]
+    },
+    {
+        "id": "e8e61d19d4647245",
+        "type": "http in",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "url": "/calculator/multiply",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "4c710414cfb432a1"
+            ]
+        ]
+    },
+    {
+        "id": "0c4e4244d2738669",
+        "type": "http in",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "url": "/calculator/divide",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "53684a5bba8c73cb"
+            ]
+        ]
+    },
+    {
+        "id": "5e4a331d6a1fcf5f",
+        "type": "http response",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1110,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "1ebb80e77a212c9b",
+        "type": "http response",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1110,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "54c516a3eff1bd20",
+        "type": "http response",
+        "z": "d5f0a94921e36b9c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1110,
+        "y": 420,
+        "wires": []
+    }
+]
